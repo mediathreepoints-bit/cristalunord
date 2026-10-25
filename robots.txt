@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mediathreepoints-bit.github.io/cristalunord/sitemap.xml
