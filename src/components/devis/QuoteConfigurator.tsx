@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { MaterialType } from '@/types';
 import { generateQuotePDF } from '@/lib/pdf/quote-generator';
+import ArchitecturalWindowBlueprint from './ArchitecturalWindowBlueprint';
 
 interface ConfiguratorState {
   step: number;
@@ -403,6 +404,27 @@ Merci pour votre retour rapide.`
               </div>
             </div>
 
+            {/* Live 2D Architectural Schematic Preview */}
+            <div className="pt-2">
+              <ArchitecturalWindowBlueprint
+                widthMm={data.width_cm * 10}
+                heightMm={data.height_cm * 10}
+                material={data.material}
+                windowType={
+                  data.opening_type.toLowerCase().includes('coulissant') || data.opening_type.toLowerCase().includes('galandage')
+                    ? 'coulissant'
+                    : data.opening_type.toLowerCase().includes('battant') || data.opening_type.toLowerCase().includes('oscillo')
+                    ? 'battant'
+                    : data.opening_type.toLowerCase().includes('porte')
+                    ? 'porte'
+                    : 'fixe'
+                }
+                colorHex={colorOptions.find((c) => c.label === data.color)?.hex || '#373f43'}
+                colorName={data.color}
+                glassType={data.glazing}
+              />
+            </div>
+
             {/* Proportion Visual Preview Box */}
             <div className="p-4 bg-brand-paperAlt border border-brand-line rounded-lg flex items-center justify-between text-xs text-brand-muted">
               <div className="flex items-center gap-3">
@@ -491,6 +513,27 @@ Merci pour votre retour rapide.`
                 checked={data.include_installation}
                 onChange={(e) => setData({ ...data, include_installation: e.target.checked })}
                 className="w-5 h-5 accent-brand-red rounded"
+              />
+            </div>
+
+            {/* Live 2D Architectural Schematic Preview for Step 4 */}
+            <div className="pt-2">
+              <ArchitecturalWindowBlueprint
+                widthMm={data.width_cm * 10}
+                heightMm={data.height_cm * 10}
+                material={data.material}
+                windowType={
+                  data.opening_type.toLowerCase().includes('coulissant') || data.opening_type.toLowerCase().includes('galandage')
+                    ? 'coulissant'
+                    : data.opening_type.toLowerCase().includes('battant') || data.opening_type.toLowerCase().includes('oscillo')
+                    ? 'battant'
+                    : data.opening_type.toLowerCase().includes('porte')
+                    ? 'porte'
+                    : 'fixe'
+                }
+                colorHex={colorOptions.find((c) => c.label === data.color)?.hex || '#373f43'}
+                colorName={data.color}
+                glassType={data.glazing}
               />
             </div>
           </div>

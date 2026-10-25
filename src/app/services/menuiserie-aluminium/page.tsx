@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { constructMetadata } from '@/lib/seo/metadata';
 import { getFAQSchema, getBreadcrumbSchema } from '@/lib/seo/structured-data';
 import { ArrowUpRight, CheckCircle2, ShieldCheck, Sparkles, Layers, MessageSquare } from 'lucide-react';
+import InteractiveProfileCutaway from '@/components/architectural/InteractiveProfileCutaway';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Menuiserie Aluminium Tanger & Maroc — Fenêtres & Baies RPT | CRISTALU NORD',
@@ -101,6 +102,11 @@ export default function MenuiserieAluminiumPage() {
               priority
             />
           </div>
+        </div>
+
+        {/* Interactive Architectural Profile Cutaway */}
+        <div className="mb-16">
+          <InteractiveProfileCutaway />
         </div>
 
         {/* Technical Features */}
